@@ -1,14 +1,14 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
 
-const HomeScreen = () => {
-    return <Text style={styles.text}>Home</Text>;
+const ComponentsScreen = () => {
+    return <Text style={styles.textStyle}>Component Screen</Text>;
 };
 
 const styles = StyleSheet.create({
-    text: {
+    textStyle: {
         fontSize: 30,
     },
 });
 
-export default HomeScreen;
+export default ComponentsScreen;
