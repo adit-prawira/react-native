@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
 });
-const SearchBar = () => {
+const SearchBar = ({ searchValue, onSearchValueChange }) => {
     return (
         <View style={styles.backgroundStyle}>
             <Feather style={styles.iconStyle} name="search" />
@@ -30,6 +30,8 @@ const SearchBar = () => {
                 autoCapitalize="none"
                 autoCorrect={false}
                 style={styles.inputStyle}
+                value={searchValue}
+                onChangeText={(newVal) => onSearchValueChange(newVal)}
             />
         </View>
     );
