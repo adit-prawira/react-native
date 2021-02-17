@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
 } from "react-native";
 import ResultDetails from "./ResultDetails";
+import { withNavigation } from "react-navigation";
 const styles = StyleSheet.create({
     titleStyle: {
         fontSize: 18,
@@ -41,4 +42,4 @@ const ResultsList = ({ title, results, navigation }) => {
     );
 };
 
-export default ResultsList;
+export default withNavigation(ResultsList);
