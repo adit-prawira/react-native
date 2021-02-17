@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
 });
-const SearchBar = ({ searchValue, onSearchValueChange }) => {
+const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
     return (
         <View style={styles.backgroundStyle}>
             <Feather style={styles.iconStyle} name="search" />
@@ -30,8 +30,11 @@ const SearchBar = ({ searchValue, onSearchValueChange }) => {
                 autoCapitalize="none"
                 autoCorrect={false}
                 style={styles.inputStyle}
-                value={searchValue}
-                onChangeText={(newVal) => onSearchValueChange(newVal)}
+                value={term}
+                onChangeText={onTermChange}
+                // when enter key is pressed it will submit the value
+                // that has been type inside the SearchBar
+                onEndEditing={onTermSubmit}
             />
         </View>
     );
