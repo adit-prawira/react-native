@@ -21,10 +21,12 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
 });
+
 const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
     return (
         <View style={styles.backgroundStyle}>
             <Feather style={styles.iconStyle} name="search" />
+
             <TextInput
                 placeholder="Search"
                 autoCapitalize="none"
