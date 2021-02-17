@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
     container: { marginBottom: 10 },
 });
 const ResultsList = ({ title, results, navigation }) => {
+    if (!results.length) {
+        return null;
+    }
     return (
         <View style={styles.container}>
             <Text style={styles.titleStyle}>{title}</Text>
