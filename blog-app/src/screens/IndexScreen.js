@@ -1,5 +1,12 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, FlatList, Button } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    FlatList,
+    Button,
+    TouchableOpacity,
+} from "react-native";
 import { Context } from "../context/BlogContext";
 import { FontAwesome } from "@expo/vector-icons";
 const styles = StyleSheet.create({
@@ -19,9 +26,8 @@ const styles = StyleSheet.create({
         color: "black",
     },
 });
-const IndexScreen = () => {
-    const { state, addBlogPost } = useContext(Context);
-
+const IndexScreen = ({ navigation }) => {
+    const { state, addBlogPost, deleteBlogPost } = useContext(Context);
     return (
         <View>
             <Text>Index Screen</Text>
@@ -31,10 +37,27 @@ const IndexScreen = () => {
                 keyExtractor={(blogPost) => blogPost.title}
                 renderItem={({ item }) => {
                     return (
-                        <View style={styles.row}>
-                            <Text style={styles.title}>{item.title}</Text>
-                            <FontAwesome name="trash-o" style={styles.icon} />
-                        </View>
+                        <TouchableOpacity
+                            onPress={() =>
+                                console.log(
+                                    navigation.navigate("Show", { id: item.id })
+                                )
+                            }
+                        >
+                            <View style={styles.row}>
+                                <Text style={styles.title}>
+                                    {item.title} - {item.id}
+                                </Text>
+                                <TouchableOpacity
+                                    onPress={() => deleteBlogPost(item.id)}
+                                >
+                                    <FontAwesome
+                                        name="trash-o"
+                                        style={styles.icon}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </TouchableOpacity>
                     );
                 }}
             />
