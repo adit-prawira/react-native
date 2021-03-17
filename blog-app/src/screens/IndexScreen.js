@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { Context } from "../context/BlogContext";
 import { FontAwesome } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+
 const styles = StyleSheet.create({
     row: {
         flexDirection: "row",
@@ -30,7 +32,6 @@ const IndexScreen = ({ navigation }) => {
     const { state, addBlogPost, deleteBlogPost } = useContext(Context);
     return (
         <View>
-            <Text>Index Screen</Text>
             <Button title="Add Post" onPress={addBlogPost} />
             <FlatList
                 data={state}
@@ -64,5 +65,9 @@ const IndexScreen = ({ navigation }) => {
         </View>
     );
 };
-
+IndexScreen.navigationOptions = () => {
+    return {
+        headerRight: <Ionicons name="add" size={30} color="black" />,
+    };
+};
 export default IndexScreen;
