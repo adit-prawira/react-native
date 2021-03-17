@@ -10,7 +10,6 @@ import {
 import { Context } from "../context/BlogContext";
 import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-
 const styles = StyleSheet.create({
     row: {
         flexDirection: "row",
@@ -65,9 +64,13 @@ const IndexScreen = ({ navigation }) => {
         </View>
     );
 };
-IndexScreen.navigationOptions = () => {
+IndexScreen.navigationOptions = ({ navigation }) => {
     return {
-        headerRight: <Ionicons name="add" size={30} color="black" />,
+        headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Create")}>
+                <Ionicons name="ios-add-circle" size={30} color="black" />
+            </TouchableOpacity>
+        ),
     };
 };
 export default IndexScreen;
