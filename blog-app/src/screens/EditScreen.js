@@ -16,13 +16,16 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
 });
-
-const CreateScreen = ({ navigation }) => {
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const { addBlogPost } = useContext(Context);
+const EditScreen = ({ navigation }) => {
+    const { state, addBlogPost } = useContext(Context);
+    const currentPost = state.find(
+        (post) => post.id === navigation.getParam("id")
+    );
+    const [title, setTitle] = useState(currentPost.title);
+    const [content, setContent] = useState(currentPost.content);
     return (
         <View>
+            <Text>Edit Post - {navigation.getParam("id")}</Text>
             <Text style={styles.label}>Title:</Text>
             <TextInput
                 style={styles.input}
@@ -47,4 +50,4 @@ const CreateScreen = ({ navigation }) => {
     );
 };
 
-export default CreateScreen;
+export default EditScreen;
