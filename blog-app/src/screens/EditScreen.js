@@ -4,10 +4,9 @@ import { StyleSheet } from "react-native";
 import BlogPostForm from "../components/BlogPostForm";
 const styles = StyleSheet.create({});
 const EditScreen = ({ navigation }) => {
-    const { state, addBlogPost } = useContext(Context);
-    const currentPost = state.find(
-        (post) => post.id === navigation.getParam("id")
-    );
+    const { state, editBlogPost } = useContext(Context);
+    const id = navigation.getParam("id");
+    const currentPost = state.find((post) => post.id === id);
     return (
         <BlogPostForm
             initialValues={{
@@ -15,7 +14,9 @@ const EditScreen = ({ navigation }) => {
                 content: currentPost.content,
             }}
             onSubmit={(title, content) =>
-                addBlogPost(title, content, () => navigation.navigate("Index"))
+                editBlogPost(id, title, content, () =>
+                    navigation.navigate("Index")
+                )
             }
         />
     );
